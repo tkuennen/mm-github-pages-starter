@@ -1,7 +1,6 @@
 Upgrading the Ubiquity Unifi Controller on RedHat/CentOS Linux.
 
-Back in mid 2016 Ubiquity pulled the links for the source Linux installers from the download pages. From what I can tell they are trying to standardize on Debian/Ubuntu. Using one of the old links I had in my history, I was able to download the latest updated by changing the release number in the address. These are the steps that I have been using to upgrade the Unifi controller since ~June of 2016.
-
+Back in mid 2016 Ubiquiti pulled the links for the source Linux installers from the download pages. From what I can tell they are trying to standardize on Debian/Ubuntu. Using one of the old links I had in my history, I was able to download the latest updated by changing the release number in the address. These are the steps that I have been using to upgrade the Unifi controller since ~June of 2016.
 
 
 First create a backup of the current configuration.
