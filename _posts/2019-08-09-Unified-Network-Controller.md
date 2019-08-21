@@ -1,26 +1,48 @@
-# Unified Network Controller
-
 All the tools you need to manage a small network on a single Linux host. This guide will walk you through setting up the following applications on a freshly minted Debian Buster (10x) machine.
+
+* Bind9 - DNS server
+* Tools - Basic network tools to do things like generate QR Codes to join the wifi and basic troubleshooting
+* FreeRADIUS - Authentication
+* Duo Authentication Proxy - Two Factor Authentication
+* Unifi Network Controller - Manage your network from a single pane of glass (For the most part)
+* NGINX - Reverse proxy
+* LetsEncrypt - Valid auto renewing SSL certificates
+* Certbot/ACME - Automated SSL certificate renewal
+* Cockpit - Web administration Console for Linux
 
 ## Debian Buster
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+To start off with this little project we will use Debian Buster (10x) with the minimal installer
 
 ## Useful Tools
+
+First and foremost you will want to make sure that the system is up to date with the latest packages. Please make sure to secure your system before making anything public facing!
+
+```
+sudo apt -y update && apt -y upgrade
+```
 
 Since this network controller is intended to be the central management point for a network it makes sense to install some utilities that will assist with troubleshooting, and maintaining the network.
 
 One liner to install them all
 ```
-apt -y install net-tools pwgen diceware qrencode curl wget
+sudo apt -y install bind9 iperf iperf3 net-tools pwgen diceware qrencode curl wget gcc sudo
+```
+
+Add your user to the sudo group
+```
+sudo usermod -g sudo <username>
 ```
 
 ## Ubiqiti Networks Unifi Controller
 ```
-curl https://dl.ui.com/unifi/5.10.25/unifi_sysvinit_all.deb
+wget -O /etc/apt/trusted.gpg.d/unifi-repo.gpg https://dl.ui.com/unifi/unifi-repo.gpg
+echo 'deb http://www.ubnt.com/downloads/unifi/debian unifi-5.10 ubiquiti' | tee /etc/apt/sources.list.d/100-ubnt-unifi.list
+```
+
+```
+wget -qO - https://www.mongodb.org/static/pgp/server-3.4.asc | sudo apt-key add - || abort
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list || abort
 ```
 ## FreeRADIUS
 ![Logo](/assets/images/freeradius.png)
@@ -37,7 +59,7 @@ apt -y install freeradius
 Ensure prerequisits are installed
 
 ```
-apt-get install build-essential python-dev libffi-dev perl zlib1g-dev
+sudo apt-get install -y build-essential python-dev libffi-dev perl zlib1g-dev
 ```
 
 Download the latest Duo authproxy software
@@ -55,13 +77,13 @@ mkdir duoauthproxy-latest-src && tar -xzf duoauthproxy-latest-src.tgz -C duoauth
 Create Duo group
 
 ```
-/sbin/groupadd duo_authproxy_grp
+sudo /sbin/groupadd duo_authproxy_grp
 ```
 
 Create Duo User and add to the Duo group
 
 ```
-/sbin/useradd duo_authproxy_svc -g duo_authproxy_grp
+sudo /sbin/useradd duo_authproxy_svc -g duo_authproxy_grp
 ```
 
 
@@ -85,3 +107,15 @@ systemctl enable duoauthproxy && systemctl start duoauthproxy
 
 ## NGINX SSL front end reverse proxy
 ![Logo](/assets/images/nginx.png)
+
+## Cockpit Server Management Interface
+
+Install cockpit
+```
+sudo apt -y install cockpit
+```
+
+Customization
+```
+/usr/share/cockpit/branding
+```
