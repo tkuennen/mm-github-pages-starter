@@ -48,9 +48,19 @@ echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb
 ![Logo](/assets/images/freeradius.png)
 
 Install FreeRADIUS
-
 ```
 apt -y install freeradius
+```
+
+Enable freeradius on startup
+
+```
+systemctl enable freeradius
+```
+
+Start FreeRADIUS
+```
+systemctl start freeradius
 ```
 
 Simple test of RADIUS functionality
