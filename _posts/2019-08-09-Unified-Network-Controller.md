@@ -1,4 +1,4 @@
-All the tools you need to manage a small network on a single Linux host. This guide will walk you through setting up the following applications on a freshly minted Debian Buster (10x) machine.
+One thing that I commonly find while working on networks is that I lack quick access to the tools I need for secure authentication and troubleshooting. I put this together as all of the steps needed for building a single lightweight Linux system to meet these needs after troubleshooting all of the individual applications. All of these applications can be run securely on a small Linux system and even on something like a RaspberryPi. All the tools you need to manage a small network on a single Linux host. This guide will walk you through setting up the following applications on a freshly minted Debian Buster (10x) machine.
 
 * Bind9 - DNS server
 * Tools - Basic network tools to do things like generate QR Codes to join the wifi and basic troubleshooting
