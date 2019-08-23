@@ -53,6 +53,11 @@ Install FreeRADIUS
 apt -y install freeradius
 ```
 
+Simple test of RADIUS functionality
+```
+radtest testing password localhost 0 testing123
+```
+
 ## Duo Authentication Proxy
 ![Logo](/assets/images/duo.png)
 
