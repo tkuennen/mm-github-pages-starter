@@ -50,7 +50,7 @@ sudo usermod -g sudo <username>
 ```
 
 ## Ubiqiti Networks Unifi Controller
-Look at install scripts
+Look at install scripts @ https://get.glennr.nl/unifi/install/unifi-5.10.27.sh
 
 ```
 wget -O /etc/apt/trusted.gpg.d/unifi-repo.gpg https://dl.ui.com/unifi/unifi-repo.gpg
