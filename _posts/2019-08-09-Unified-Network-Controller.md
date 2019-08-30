@@ -29,6 +29,7 @@ The software....
 
 To start off with this little project we will use Debian Buster (10x) with the minimal installer
 https://cdimage.debian.org/mirror/cdimage/release/current/amd64/iso-cd/debian-10.0.0-amd64-netinst.iso
+
 ## Useful Tools
 
 First and foremost you will want to make sure that the system is up to date with the latest packages. Please make sure to secure your system before making anything public facing!
@@ -40,6 +41,7 @@ sudo apt -y update && apt -y upgrade
 Since this network controller is intended to be the central management point for a network it makes sense to install some utilities that will assist with troubleshooting, and maintaining the network.
 
 One liner to install them all
+
 ```
 sudo apt -y install bind9 iperf iperf3 net-tools pwgen diceware qrencode curl wget gcc sudo
 ```
@@ -50,6 +52,7 @@ sudo usermod -g sudo <username>
 ```
 
 ## Ubiqiti Networks Unifi Controller
+
 Look at install scripts @ https://get.glennr.nl/unifi/install/unifi-5.10.27.sh
 
 ```
